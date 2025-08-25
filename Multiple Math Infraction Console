@@ -1,0 +1,244 @@
+package Itration;
+
+import java.util.Scanner;
+
+public class All_In_One_Code 
+{
+	static int num;
+	Scanner s = new Scanner(System.in);
+	
+void Input()
+{
+	num = s.nextInt();
+}
+	
+void Even()
+{   System.out.println("-------------------------------------");
+	int n =num;
+	 if (n % 2 == 0)
+     {  // Check if divisible by 2
+         System.out.println("Yes It Is Even");
+     }  
+	 else 
+	 {
+		 System.out.println("No It Is Not Even");
+	 }
+	 System.out.println("-------------------------------------");
+}
+
+void Odd()
+{System.out.println("-------------------------------------");
+	int n =num;
+	 if (n % 2 == 0)
+    {  // Check if divisible by 2
+        System.out.println("No It Is Not Odd");
+    }  
+	else 
+	{
+		 System.out.println("Yes It Is Odd");
+    }System.out.println("-------------------------------------");
+}
+
+void Prime()
+{System.out.println("-------------------------------------");
+	int n =num;
+    boolean isPrime = true;
+
+    if (num <= 1) {
+        isPrime = false;  // 0 and 1 are not prime
+    } else {
+        for (int i = 2; i <= num / 2; i++) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+
+    if (isPrime) {
+        System.out.println("Yes, Prime");
+    } else {
+        System.out.println("No, Not Prime");
+    }System.out.println("-------------------------------------");
+	
+}
+
+void Fact()
+{System.out.println("-------------------------------------");
+	int n =num;
+    int fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact = fact * i;
+    }
+
+    System.out.println("Factorial of " + n + " is: " + fact);
+    System.out.println("-------------------------------------");
+}
+
+void Armstrong()
+{System.out.println("-------------------------------------");
+	int n =num;
+    int original = n;
+    int sum = 0;
+
+    while (n > 0) {
+        int digit = n % 10;      // get last digit
+        sum += digit * digit * digit; // cube of digit
+        n = n / 10;            // remove last digit
+    }
+
+    if (sum == original) {
+        System.out.println(original + " is an Armstrong Number.");
+    } else {
+        System.out.println(original + " is NOT an Armstrong Number.");
+    }System.out.println("-------------------------------------");
+}
+
+void Palindrome()
+{System.out.println("-------------------------------------");
+	int n =num;
+    int original = n;
+    int rev = 0;
+
+    while (n > 0) {
+        int digit = n % 10;   // get last digit
+        rev = rev * 10 + digit; // build reversed number
+        n = n / 10;        // remove last digit
+    }
+
+    if (original == rev) {
+        System.out.println(original + " is a Palindrome.");
+    } else {
+        System.out.println(original + " is NOT a Palindrome.");
+    }System.out.println("-------------------------------------");
+}
+
+void Leap()
+{System.out.println("-------------------------------------");
+	int n =num;
+    if ((n % 400 == 0) || (n % 4 == 0 && n % 100 != 0)) {
+        System.out.println(n + " is a Leap Year.");
+    } else {
+        System.out.println(n + " is NOT a Leap Year.");
+    }System.out.println("-------------------------------------");
+}
+
+void Perfect()
+{System.out.println("-------------------------------------");
+	int n =num;
+    int sum = 0;
+
+    // find divisors and add them
+    for (int i = 1; i <= n / 2; i++) {
+        if (n % i == 0) {
+            sum += i;
+        }
+    }
+
+    if (sum == n && n != 0) {
+        System.out.println(n + " is a Perfect Number.");
+    } else {
+        System.out.println(n + " is NOT a Perfect Number.");
+    }System.out.println("-------------------------------------");
+}
+
+void Fibonacci()
+{System.out.println("-------------------------------------");
+	int n =num;
+    int first = 0, second = 1;
+
+    System.out.print("Fibonacci Series: ");
+
+    for (int i = 1; i <= n; i++) {
+        System.out.print(first + " ");
+        int next = first + second;
+        first = second;
+        second = next;
+    }System.out.println("");
+    System.out.println("-------------------------------------");
+}
+
+void Pattern()
+{System.out.println("-------------------------------------");
+	int n =num;
+	System.out.println("");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print("*");
+            }
+        System.out.println("");
+        }System.out.println("-------------------------------------");
+}
+	public static void main(String[] args) 
+	{
+		All_In_One_Code k = new All_In_One_Code();
+		
+		String choice="y";
+		Scanner din = new Scanner(System.in);
+		
+		while(choice.equals("y") || choice.equals("Y"))
+			while(choice.equalsIgnoreCase("y"))
+			{
+				System.out.println("");
+				System.out.println("Even");
+				System.out.println("Odd");
+				System.out.println("Prime");
+				System.out.println("Factorial");
+				System.out.println("Palindrome");
+				System.out.println("Armstrong");
+				System.out.println("Leap");
+				System.out.println("Perfect");
+				System.out.println("fibonacci");
+				System.out.println("pattern");
+				System.out.println("All");
+				System.out.println("");
+				System.out.println("Enter Your program selection name");
+				String option = din.next();
+				System.out.println("-------------------------------------");
+				switch(option.toLowerCase())
+				{
+				case "even": System.out.print("Enter Ypur Number "); k.Input(); k.Even();
+				// TODO
+					break;
+				case "odd": System.out.print("Enter Ypur Number "); k.Input(); k.Odd();
+				
+					break;
+				case "prime": System.out.print("Enter Ypur Number "); k.Input(); k.Prime();
+				
+					break;
+				case "Leap": System.out.print("Enter Ypur Year "); k.Input(); k.Fact();
+					
+					break;
+				case "factorial": System.out.print("Enter Ypur Number "); k.Input(); k.Armstrong();
+					
+					break;
+				case "palindrome": System.out.print("Enter Ypur Number "); k.Input(); k.Palindrome();
+					
+					break;
+				case "armstrong": System.out.print("Enter Ypur Number "); k.Input(); k.Armstrong();
+					
+					break;	
+				case "leap": System.out.print("Enter Ypur Number "); k.Input(); k.Leap();
+					
+					break;
+				case "perfect": System.out.print("Enter Ypur Number "); k.Input(); k.Perfect();
+					
+					break;	
+				case "fibonacci": System.out.print("Enter Ypur Number "); k.Input(); k.Fibonacci();
+					
+					break;
+				case "pattern": System.out.print("Enter Ypur Number "); k.Input(); k.Pattern();
+					
+					break;
+				case "all": System.out.print("Enter Ypur Number "); k.Input(); k.Even(); k.Odd();  k.Prime(); k.Fact(); k.Armstrong(); k.Palindrome(); k.Armstrong(); k.Leap(); k.Perfect(); k.Fibonacci(); k.Pattern();
+				
+				break;
+				default:
+                    System.out.println("Invalid choice!");
+				}
+			
+			}
+	}
+
+}                 /*    even   odd  prime Leap factorial  palindrome  eak;
+				case armstrong  leap perfect  fibonacci pattern   */
