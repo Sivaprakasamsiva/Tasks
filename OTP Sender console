@@ -1,0 +1,54 @@
+
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import java.util.Random;
+import java.util.Scanner;
+
+public class OTPViaTwilio {
+    
+    // Replace with your Twilio Account SID and Auth Token
+    public static final String ACCOUNT_SID = "Enter Twilio SID";
+    public static final String AUTH_TOKEN = "Enter Auto Tocan";
+    public static final String TWILIO_NUMBER = "Your Twilio US number"; // 
+    
+    public static void main(String[] args) {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Scanner sc = new Scanner(System.in);
+        
+        // Step 1: Ask for recipient number
+        System.out.print("Enter recipient number with country code (e.g. +91XXXXXXXXXX): "); // +918270152696
+        String toNumber = sc.nextLine().trim();
+        
+        // Step 2: Generate 6-digit OTP
+        String otp = String.format("%06d", new Random().nextInt(1000000));
+        
+        try {
+            // Step 3: Send OTP via SMS
+            Message message = Message.creator(
+                    new PhoneNumber(toNumber), 
+                    new PhoneNumber(TWILIO_NUMBER),
+                    "Your OTP is: " + otp
+            ).create();
+            
+            System.out.println("OTP sent successfully! SID: " + message.getSid());
+        } catch (Exception e) {
+            System.out.println("Error sending OTP: " + e.getMessage());
+            sc.close();
+            return;
+        }
+        
+        // Step 4: Prompt for OTP entry
+        System.out.print("Enter the OTP received: ");
+        String enteredOtp = sc.nextLine().trim();
+        
+        // Step 5: Verify OTP
+        if (enteredOtp.equals(otp)) {
+            System.out.println("✅ OTP Verified!");
+        } else {
+            System.out.println("❌ Wrong OTP!");
+        }
+        
+        sc.close();
+    }
+}
